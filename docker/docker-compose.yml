@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-deptooldba}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-deptoolpass}
+      POSTGRES_DB: ${POSTGRES_DB:-deptool}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-deptooldba}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-deptooldba}:${POSTGRES_PASSWORD:-deptoolpass}@postgres:5432/${POSTGRES_DB:-deptool}
+      - SECRET_KEY=${SECRET_KEY:-changethissecretkey}
+      - DEBUG=${DEBUG:-false}
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - ENABLE_AI_FEATURES=${ENABLE_AI_FEATURES:-true}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app/backend
+      - model_data:/app/models
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000/api/v1
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  model_data:

@@ -1,0 +1,94 @@
+advanced-dependency-intelligence/
+├── backend/
+│   ├── core/
+│   │   ├── init.py
+│   │   ├── config.py
+│   │   ├── db.py
+│   │   └── models.py
+│   ├── services/
+│   │   ├── init.py
+│   │   ├── impact_scoring.py
+│   │   ├── predictive_management.py
+│   │   ├── dependency_consolidation.py
+│   │   ├── code_adaptation.py
+│   │   ├── health_monitoring.py
+│   │   ├── license_compliance.py
+│   │   └── performance_profiling.py
+│   ├── analysis/
+│   │   ├── init.py
+│   │   ├── static_analyzer.py
+│   │   ├── dependency_parser.py
+│   │   ├── python_analyzer.py
+│   │   └── nodejs_analyzer.py
+│   ├── api/
+│   │   ├── init.py
+│   │   ├── router.py
+│   │   ├── auth.py
+│   │   └── endpoints/
+│   │       ├── init.py
+│   │       ├── projects.py
+│   │       ├── dependencies.py
+│   │       ├── analysis.py
+│   │       └── recommendations.py
+│   ├── ai/
+│   │   ├── init.py
+│   │   ├── code_transformer.py
+│   │   ├── compatibility_predictor.py
+│   │   └── models.py
+│   ├── init.py
+│   ├── main.py
+│   └── requirements.txt
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── DependencyList.jsx
+│   │   │   ├── ImpactScoreCard.jsx
+│   │   │   ├── PredictiveTimeline.jsx
+│   │   │   ├── DependencyGraph.jsx
+│   │   │   └── AnalysisReport.jsx
+│   │   ├── services/
+│   │   │   ├── api.js
+│   │   │   └── auth.js
+│   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Project.jsx
+│   │   │   ├── Analysis.jsx
+│   │   │   └── Settings.jsx
+│   │   ├── App.jsx
+│   │   ├── index.jsx
+│   │   └── styles.css
+│   ├── package.json
+│   └── webpack.config.js
+├── cli/
+│   ├── init.py
+│   ├── commands/
+│   │   ├── init.py
+│   │   ├── analyze.py
+│   │   ├── report.py
+│   │   └── update.py
+│   └── main.py
+├── docker/
+│   ├── Dockerfile.backend
+│   ├── Dockerfile.frontend
+│   └── docker-compose.yml
+├── docs/
+│   ├── api.md
+│   ├── architecture.md
+│   └── getting-started.md
+├── tests/
+│   ├── init.py
+│   ├── conftest.py
+│   ├── unit/
+│   │   ├── init.py
+│   │   ├── test_impact_scoring.py
+│   │   └── test_dependency_parser.py
+│   └── integration/
+│       ├── init.py
+│       └── test_api_endpoints.py
+├── .gitignore
+├── README.md
+└── setup.py
